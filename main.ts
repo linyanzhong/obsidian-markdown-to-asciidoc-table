@@ -83,6 +83,12 @@ function markdownToAsciiDoc(markdown: string): string {
 	// Split the input markdown string into lines
 	const lines = markdown.split("\n").filter((line) => line.trim() !== "");
 
+	// Check if the second line is a separator line
+	const separatorLine = lines[1].trim();
+	if (!/^(\|\s*-+\s*)+\|$/.test(separatorLine)) {
+		throw new Error("Invalid markdown table: missing separator line.");
+	}
+
 	// Extract the header and rows
 	const header = lines[0]
 		.split("|")
