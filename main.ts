@@ -85,6 +85,15 @@ function markdownToAsciiDoc(markdown: string): string {
 
 	// Check if the second line is a separator line
 	const separatorLine = lines[1].trim();
+	// Regex explanation:
+	// ^: Asserts the start of the line.
+	// (\|\s*-+\s*)+: Matches one or more occurrences of:
+	//   \|: A literal pipe character.
+	//   \s*: Zero or more whitespace characters.
+	//   -+: One or more dashes.
+	//   \s*: Zero or more whitespace characters.
+	// \|: A literal pipe character at the end.
+	// $: Asserts the end of the line.
 	if (!/^(\|\s*-+\s*)+\|$/.test(separatorLine)) {
 		throw new Error("Invalid markdown table: missing separator line.");
 	}
