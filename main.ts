@@ -49,7 +49,11 @@ export default class MyPlugin extends Plugin {
 				const asciidocTable = markdownToAsciiDoc(tableLines);
 
 				// Replace the markdown table with the AsciiDoc table
-				editor.replaceRange(asciidocTable, { line: start, ch: 0 }, { line: end, ch: 0 });
+				editor.replaceRange(
+					asciidocTable,
+					{ line: start, ch: 0 },
+					{ line: end, ch: 0 },
+				);
 			},
 		});
 	}
@@ -60,7 +64,7 @@ export default class MyPlugin extends Plugin {
 		this.settings = Object.assign(
 			{},
 			DEFAULT_SETTINGS,
-			await this.loadData()
+			await this.loadData(),
 		);
 	}
 
@@ -83,12 +87,12 @@ function markdownToAsciiDoc(markdown: string): string {
 	const header = lines[0]
 		.split("|")
 		.map((cell) => convertLinks(cell.trim()))
-		.filter((cell) => cell !== "");
+		.slice(1, -1);
 	const rows = lines.slice(2).map((line) =>
 		line
 			.split("|")
 			.map((cell) => convertLinks(cell.trim()))
-			.filter((cell) => cell !== "")
+			.slice(1, -1),
 	);
 
 	// Build the AsciiDoc table
