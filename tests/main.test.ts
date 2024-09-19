@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { markdownToAsciiDoc } from '../main';
+import { markdownToAsciiDoc } from '../markdownToAsciiDoc';
 
 describe('markdownToAsciiDoc', () => {
 	it('should convert a simple markdown table to AsciiDoc', () => {

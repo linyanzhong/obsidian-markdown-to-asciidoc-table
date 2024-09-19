@@ -8,6 +8,7 @@ import {
 	PluginSettingTab,
 	Setting,
 } from "obsidian";
+import { markdownToAsciiDoc } from "./markdownToAsciiDoc";
 
 // Remember to rename these classes and interfaces!
 
