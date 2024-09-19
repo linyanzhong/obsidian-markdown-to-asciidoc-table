@@ -48,6 +48,15 @@ export default class MyPlugin extends Plugin {
 		await this.saveData(this.settings);
 	}
 
+	/**
+	 * Converts a markdown table in the editor to an AsciiDoc table.
+	 * It identifies the table based on the cursor position, extracts it,
+	 * converts it using the markdownToAsciiDoc function, and replaces
+	 * the original markdown table with the converted AsciiDoc table.
+	 *
+	 * @param editor - The editor instance where the command is executed.
+	 * @param view - The current markdown view.
+	 */
 	private convertContent(editor: Editor, view: MarkdownView) {
 		const cursor = editor.getCursor();
 		const lines = editor.getValue().split("\n");
