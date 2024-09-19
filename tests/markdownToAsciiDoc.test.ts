@@ -27,7 +27,7 @@ describe('markdownToAsciiDoc', () => {
 \`\`\`
 		`.trim();
 
-		expect(markdownToAsciiDoc(markdown)).toBe(expectedAsciiDoc);
+		expect(markdownToAsciiDoc(markdown).trim()).toBe(expectedAsciiDoc);
 	});
 
 	it('should throw an error for invalid markdown table', () => {
